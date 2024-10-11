@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
- <title>ROMEK-XD</title>
+ <title>ROMEK XD</title>
  <link rel="stylesheet" type="text/css" href="fontawesome/css/all.min.css">
  <style>
 body {
@@ -9,7 +9,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-image: url('https://files.catbox.moe/o2fq70.jpg');
+  background-image: url('https://files.catbox.moe/ry8t4i.jpg');
   background-size: cover; 
   background-position: center; 
   font-family: 'Helvetica', sans-serif;
@@ -28,7 +28,7 @@ body {
   max-width: 800px; /* Adjusted max-width */
   max-height: 1000px; /* Adjusted max-height */
   border-radius: 0;
-  background-image: url('https://files.catbox.moe/o2fq70.jpg');
+  background-color: rgba(255, 255, 255, 0.8);
   /* Add a semi-transparent white background to make text more readable */
   box-shadow: 0 0 17px rgba(0, 0, 0, 0.1);
   padding: 25px;
@@ -42,7 +42,7 @@ body {
 }
 
 .header h1 {
-  color: #128c7e;
+  color: #5935ac;
   font-size: 30px;
   margin-bottom: 30px;
 }
@@ -52,7 +52,7 @@ body {
 }
 
 .main input {
-  width: calc(100% - 30px); /* Adjusted width */
+  width: calc(90% - 30px); /* Adjusted width */
   height: 60px;
   border: none;
   outline: none;
@@ -62,27 +62,28 @@ body {
   margin-bottom: 20px;
   border-radius: 0; /* Square off the corners */
   background-color: #f2f2f2;
-  border: 1px solid #ddd;
+  border: 5px solid #ddd;
 }
 
 .main button {
-  padding: 0;
-  background-color: red;
-  letter-spacing: 0px;
-  font-weight: bold;
-  margin-bottom: 30px;
-  border-radius: 0; /* Square off the corners */
-  width: 100%;
-  height: 50px;
-  font-size: 18px;
-  color: #fff;
-  border: none;
+
+      flex-basis: 15%;
+      padding: 1rem;
+      background: #5935ac;
+      font-weight: 700;
+      letter-spacing: 0.3rem;
+      text-transform: uppercase;
+      color: white;
+      border: none;
+      width: 90%;
+      border-radius: 0 1rem 1rem 0;
+      transition: all 0.2s ease-in-out;
 }
 
 #copyb {
   padding: 0;
-  background-color: blue;
-  letter-spacing: 0px;
+  background-color: #25d366;
+  letter-spacing: 10px;
   font-weight: bold;
   margin-bottom: 20px;
   border-radius: 0; /* Square off the corners */
@@ -114,7 +115,7 @@ body {
 .main i {
   position: absolute;
   left: 15px;
-  color: red;
+  color: #128c7e;
   font-size: 16px;
   top: 50%;
   transform: translateY(-50%);
@@ -126,7 +127,7 @@ body {
 <body>
  <div class="container">
   <div class="header">
-   <h1>ROMEK-XD PAIRING</h1>
+   <h1>ROMEK XD PAIRING</h1>
   </div>
   <div class="main">
    <form>
@@ -145,7 +146,7 @@ body {
     ></script>
     <script>
       let a = document.getElementById("pair");
-      let b = document.getElementById("submit");
+      let b = document.getElementById("GET PAIR CODE");
       let c = document.getElementById("number");
   
       let isSubmitting = false;
@@ -225,4 +226,4 @@ body {
       });
     </script>
 </body>
-  </html>
+</html>
