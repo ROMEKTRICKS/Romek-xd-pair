@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
- <title>ROMEK XD</title>
+ <title>GURU</title>
  <link rel="stylesheet" type="text/css" href="fontawesome/css/all.min.css">
  <style>
 body {
@@ -9,7 +9,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-image: url('https://files.catbox.moe/ry8t4i.jpg');
+  background-image: url('https://image.lexica.art/full_webp/109e7582-4bce-466e-9a97-d9650140553d');
   background-size: cover; 
   background-position: center; 
   font-family: 'Helvetica', sans-serif;
@@ -42,7 +42,7 @@ body {
 }
 
 .header h1 {
-  color: #5935ac;
+  color: #128c7e;
   font-size: 30px;
   margin-bottom: 30px;
 }
@@ -52,7 +52,7 @@ body {
 }
 
 .main input {
-  width: calc(90% - 30px); /* Adjusted width */
+  width: calc(100% - 30px); /* Adjusted width */
   height: 60px;
   border: none;
   outline: none;
@@ -62,28 +62,27 @@ body {
   margin-bottom: 20px;
   border-radius: 0; /* Square off the corners */
   background-color: #f2f2f2;
-  border: 5px solid #ddd;
+  border: 1px solid #ddd;
 }
 
 .main button {
-
-      flex-basis: 15%;
-      padding: 1rem;
-      background: #5935ac;
-      font-weight: 700;
-      letter-spacing: 0.3rem;
-      text-transform: uppercase;
-      color: white;
-      border: none;
-      width: 90%;
-      border-radius: 0 1rem 1rem 0;
-      transition: all 0.2s ease-in-out;
+  padding: 0;
+  background-color: #128c7e;
+  letter-spacing: 0px;
+  font-weight: bold;
+  margin-bottom: 30px;
+  border-radius: 0; /* Square off the corners */
+  width: 100%;
+  height: 50px;
+  font-size: 18px;
+  color: #fff;
+  border: none;
 }
 
 #copyb {
   padding: 0;
   background-color: #25d366;
-  letter-spacing: 10px;
+  letter-spacing: 0px;
   font-weight: bold;
   margin-bottom: 20px;
   border-radius: 0; /* Square off the corners */
@@ -127,7 +126,7 @@ body {
 <body>
  <div class="container">
   <div class="header">
-   <h1>ROMEK XD PAIRING</h1>
+   <h1>GURU BOT PAIRING</h1>
   </div>
   <div class="main">
    <form>
@@ -135,7 +134,7 @@ body {
      <i class="fa fa-user"></i>
      <input type="number" id="number" placeholder="enter your phone number with country code" name="">
     </span><br>
-     <button id="GET PAIR CODE">GET PAIR CODE</button>
+     <button id="submit">submit</button>
 <main id="pair"></main>
    </form>
   </div>
@@ -146,7 +145,7 @@ body {
     ></script>
     <script>
       let a = document.getElementById("pair");
-      let b = document.getElementById("GET PAIR CODE");
+      let b = document.getElementById("submit");
       let c = document.getElementById("number");
   
       let isSubmitting = false;
@@ -170,7 +169,7 @@ body {
         e.preventDefault();
   
         if (isCodeDisplayed) {
-          alert("Please wait for 1 minutes before requesting a new code.");
+          alert("Please wait for 2 minutes before requesting a new code.");
           return;
         }
   
@@ -226,4 +225,4 @@ body {
       });
     </script>
 </body>
-</html>
+  </html>
