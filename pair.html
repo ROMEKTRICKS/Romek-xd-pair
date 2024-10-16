@@ -186,101 +186,80 @@
   <div class="container">
     <div class="header">
       <img class="logo" src="https://files.catbox.moe/k5uod2.jpg" alt="WhatsApp Logo" width="40">
-      <h1>ROMEK-XD Pairing Server</h1>
-    </div>
-    <div class="main">
-      <form>
-        <!-- Country Code Dropdown -->
-        <select id="countryCode">
-          <option value="+1">USA (+1)</option>
-          <option value="+91">India (+91)</option>
-          <option value="+44">UK (+44)</option>
-          <!-- Add more countries as per your need -->
-        </select>
-        <input type="text" id="number" placeholder="Phone number">
-        <button id="submit">Get Pair Code</button>
-        <main id="pair"></main>
-      </form>
-    </div>
+      <h1>ROMEK-Xd Pairing Server</h1>
+<div class="main">
+  <form>
+    <input type="text" id="number" placeholder="Phone number" required>
+    <button id="submit">Get Pair Code</button>
+    <main id="pair"></main>
+  </form>
+</div>
   </div>
 
   <button id="icon-button" class="whatsapp-button" onclick="window.open('https://whatsapp.com/channel/0029VakaPzeD38CV78dbGf0e', '_blank')">
     <i class="fab fa-whatsapp"></i> Join WhatsApp Channel
   </button>
-  
-  <!-- Axios library link -->
-  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+            
+            <a id="waiting-message" class="centered-text" style="display: none;">Please wait a while</a>
+            <br>
+            <br>
+            <main id="pair"></main>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.0.0-alpha.1/axios.min.js"></script>
+  <script>
+    let a = document.getElementById("pair");
+    let b = document.getElementById("submit");
+    let c = document.getElementById("number");
+    let box = document.getElementById("box");
 
-<script>
-  let a = document.getElementById("pair");
-  let b = document.getElementById("submit");
-  let c = document.getElementById("number");
-  let cc = document.getElementById("countryCode");
-
-  let isSubmitting = false;
-  let isCodeDisplayed = false;
-
-  async function Copy() {
-    let codeElement = document.getElementById("copy");
-    let codeText = codeElement ? codeElement.innerText.replace('CODE: ', '') : '';
-    if (codeText) {
-      await navigator.clipboard.writeText(codeText);
-      codeElement.innerText = "COPIED";
-      codeElement.style.color = "blue";
+    async function Copy() {
+      let text = document.getElementById("copy").innerText;
+      let obj = document.getElementById("copy");
+      await navigator.clipboard.writeText(obj.innerText.replace('CODE: ', ''));
+      obj.innerText = "COPIED";
+      obj.style = "color:blue;font-weight:bold";
+      obj.size = "5";
       setTimeout(() => {
-        codeElement.innerText = `CODE: ${codeText}`;
-        codeElement.style.color = "black";
+        obj.innerText = text;
+        obj.style = "color:white;font-weight-bold";
+        obj.size = "5";
       }, 500);
     }
-  }
 
-  b.addEventListener("click", async (e) => {
-    e.preventDefault();
-
-    if (isCodeDisplayed) {
-      alert("Please wait for 2 minutes before requesting a new code.");
-      return;
-    }
-
-    if (isSubmitting) {
-      alert("Please wait for the code before trying to request again.");
-      return;
-    }
-
-    if (!c.value) {
-      a.innerHTML = '<a style="color:black;font-weight:bold">Enter your phone number</a><br><br>';
-    } else if (c.value.replace(/[^0-9]/g, "").length < 7) {
-      a.innerHTML = '<a style="color:black;font-weight:bold">Invalid number format</a><br><br>';
-    } else {
-      isSubmitting = true;
-      document.querySelector('.loading').style.display = 'flex';
-
-      const fullPhoneNumber = `${cc.value}${c.value.replace(/[^0-9]/g, "")}`;
-
-      try {
-        console.log("Sending request to API with phone number:", fullPhoneNumber); // Console log to debug
-
-        let { data } = await axios.get(`/pair?phone=${encodeURIComponent(fullPhoneNumber)}`);
-
-        console.log("API response:", data); // Log response for debugging
-
+    b.addEventListener("click", async (e) => {
+      e.preventDefault();
+      if (!c.value) {
+        a.innerHTML = '<a style="color:white;font-weight:bold">Enter your WhatsApp number with a country code</a><br><br>';
+      } else if (c.value.replace(/[^0-9]/g, "").length < 11) {
+        a.innerHTML = '<a style="color:red;font-weight:bold">Invalid number</a><br><br>';
+      } else {
+        const Maher_Zubair = c.value.replace(/[^0-9]/g, "");
+        let bb = "";
+        let bbc = "";
+        const cc = Maher_Zubair.split('');
+        cc.map(a => {
+          bbc += a;
+          if (bbc.length == 3) {
+            bb += " " + a;
+          } else if (bbc.length == 8) {
+            bb += " " + a;
+          } else {
+            bb += a;
+          }
+        });
+        c.type = "text";
+        c.value = "+" + bb;
+        c.style = "color:black;font-size:20px";
+        a.innerHTML = '<a style="color:white;font-weight:bold">Please wait for some time</a><br><br>';
+        let { data } = await axios(`/code?number=${Maher_Zubair}`);
         let code = data.code || "Service Unavailable";
-        if (code !== "Service Unavailable") {
-          a.innerHTML = `<div><span id="copy" onclick="Copy()">CODE: ${code}</span></div><button id="copyb" onclick="Copy()">Copy Code</button>`;
-          isCodeDisplayed = true;
-          setTimeout(() => {
-            isCodeDisplayed = false;
-          }, 120000);
-        } else {
-          a.innerHTML = '<a style="color:red;font-weight:bold">Error: Service Unavailable. Please try again later.</a><br><br>';
-        }
-      } catch (error) {
-        console.error("Error occurred during API call:", error); // Log error to console
-        a.innerHTML = '<a style="color:red;font-weight:bold">Error: Could not connect to server. Please try again later.</a><br><br>';
-      } finally {
-        document.querySelector('.loading').style.display = 'none';
-        isSubmitting = false;
+        a.innerHTML = '<font id="copy" onclick="Copy()" style="color:red;font-weight:bold" size="5">CODE: <span style="color:white;font-weight:bold">' + code + '</span></font><br><br><br>';
       }
-    }
-  });
-</script>
+    });
+  </script>
+</body>
+    </html>
